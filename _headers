@@ -1,0 +1,10 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer-when-downgrade
+
+/src/*
+  Cache-Control: public, max-age=3600
+  Content-Type: application/javascript; charset=utf-8
+
+/styles/*
+  Cache-Control: public, max-age=3600

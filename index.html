@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#1a1410">
+  <meta name="description" content="基于《紫微斗数精成》的专业排盘与解读系统，支持 108 星曜、四化飞星、大限小限流年、历年运势回顾。">
+  <!-- 分享到微信/Twitter/Facebook 的预览卡片 -->
+  <meta property="og:title" content="紫微斗数 · 精成">
+  <meta property="og:description" content="输入生辰八字，一秒排盘；专业解读命盘、四化、大限流年，并支持大白话模式。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary">
+  <title>紫微斗数 · 精成 | 专业排盘解读系统</title>
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%231a1410'/><text x='50%25' y='54%25' font-size='40' text-anchor='middle' fill='%23d4a657' font-family='serif' dominant-baseline='middle'>紫</text></svg>">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="app">
+    <header class="site-header">
+      <div>
+        <div class="site-title">紫<span class="sep">·</span>微<span class="sep">·</span>斗<span class="sep">·</span>数</div>
+        <div class="site-sub">基于《紫微斗数精成》· 专业排盘解读</div>
+      </div>
+      <form id="form" class="form" autocomplete="off">
+        <div class="field">
+          <label>公历日期</label>
+          <input type="date" id="date" required value="1990-05-15" min="1900-01-31" max="2100-12-31" />
+        </div>
+        <div class="field">
+          <label>出生时辰</label>
+          <select id="hour" required>
+            <option value="0">子时（23-01）</option>
+            <option value="2">丑时（01-03）</option>
+            <option value="4">寅时（03-05）</option>
+            <option value="6">卯时（05-07）</option>
+            <option value="8">辰时（07-09）</option>
+            <option value="10">巳时（09-11）</option>
+            <option value="12" selected>午时（11-13）</option>
+            <option value="14">未时（13-15）</option>
+            <option value="16">申时（15-17）</option>
+            <option value="18">酉时（17-19）</option>
+            <option value="20">戌时（19-21）</option>
+            <option value="22">亥时（21-23）</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>性别</label>
+          <select id="gender" required>
+            <option value="男" selected>男</option>
+            <option value="女">女</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">排&nbsp;&nbsp;盘</button>
+        <label class="plain-switch" title="一键切换原文 / 大白话">
+          <input type="checkbox" id="plain-toggle" />
+          <span class="plain-track">
+            <span class="plain-thumb"></span>
+          </span>
+          <span class="plain-label">🗣 大白话</span>
+        </label>
+      </form>
+    </header>
+
+    <main class="main">
+      <section class="board-wrap" id="board-wrap">
+        <div class="empty-state">
+          <div>✦ 输入生辰，排出命盘 ✦</div>
+          <div style="font-size:12px;letter-spacing:2px">紫微在天，定人一生</div>
+        </div>
+      </section>
+
+      <section class="report" id="report">
+        <!-- 解读报告将由 JS 渲染 -->
+        <div class="empty-state" style="height:auto; padding:80px 20px; border:1px dashed var(--gold-soft); border-radius:8px;">
+          <div>尚未排盘</div>
+          <div style="font-size:12px">填写左上角信息后点击"排盘"</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      © 紫微斗数 · 精成 | 本系统仅供学习与文化研究，命运由己不由天
+    </footer>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
