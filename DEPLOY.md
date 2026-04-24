@@ -2,7 +2,11 @@
 
 本项目是纯静态站点（HTML + CSS + 原生 ES Module JS），**无需构建**，可一键部署到任意静态托管平台。
 
-推荐顺序：**Cloudflare Pages > Vercel > Netlify > GitHub Pages**。
+> 🇨🇳 **朋友在国内打不开？** → 请看 [**DEPLOY_CN.md**](./DEPLOY_CN.md)（EdgeOne Pages / GitCode Pages / 腾讯云 COS 等国内直连方案）
+
+推荐顺序：
+- **海外/能科学上网**：Cloudflare Pages > Vercel > Netlify > GitHub Pages
+- **国内朋友访问**：EdgeOne Pages > GitCode Pages > Gitee Pages > 腾讯云 COS
 
 ---
 

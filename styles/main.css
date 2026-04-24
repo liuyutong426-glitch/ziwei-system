@@ -248,7 +248,12 @@ html, body {
   border-left: 3px solid var(--gold);
   padding-left: 10px;
 }
-.section-body p { margin-bottom: 10px; white-space: pre-wrap; }
+.section-body p {
+  margin-bottom: 10px;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  line-height: 2.0;
+}
 
 /* 十二宫列表折叠 */
 .palace-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
@@ -275,10 +280,11 @@ html, body {
 .palace-item .body {
   padding: 10px 18px 14px;
   border-top: 1px dashed var(--gold-soft);
-  white-space: pre-wrap;
   color: var(--ink-1);
   line-height: 1.95;
   font-size: 14.5px;
+  text-align: justify;
+  text-justify: inter-ideograph;
 }
 
 /* Ask */
@@ -332,11 +338,12 @@ html, body {
   font-family: var(--serif);
 }
 .ask-card .body {
-  white-space: pre-wrap;
   color: var(--ink-1);
   line-height: 1.9;
   font-size: 14px;
   font-family: var(--serif);
+  text-align: justify;
+  text-justify: inter-ideograph;
 }
 
 /* Animations */

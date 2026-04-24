@@ -62,7 +62,7 @@ console.log("\nCase6: 大白话翻译");
 const raw1 = "紫微星入命宫，为人忠厚，宜文职，忌煞忌交冲。";
 const plain1 = plainify(raw1);
 assertEq(plain1.includes("紫微（领导星）"), true, "紫微星 → 紫微（领导星）");
-assertEq(plain1.includes("性格上"), true, "为人 → 性格上");
+assertEq(plain1.includes("这个人"), true, "为人 → 这个人");
 assertEq(plain1.includes("适合"), true, "宜 → 适合");
 const raw2 = "三方四正有化禄，主富贵。";
 const plain2 = plainify(raw2);

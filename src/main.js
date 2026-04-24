@@ -25,6 +25,22 @@ function escapeHtml(s) {
   }[c]));
 }
 
+// 把一段长文本按"。"切成多个段落（每 2~3 句一段），渲染成 <p>...</p>
+// 保证视觉有清晰的段落感，而不是一大坨或被随机断行
+function paragraphize(text, sentPerPara = 3) {
+  if (!text) return "";
+  // 先把所有 \n 和多空格统一成单空格
+  const clean = String(text).replace(/[\r\n]+/g, " ").replace(/\s+/g, " ").trim();
+  // 按句号/感叹/问号切（保留标点）
+  const sents = clean.split(/(?<=[。！？])/).map((s) => s.trim()).filter(Boolean);
+  if (sents.length === 0) return `<p>${escapeHtml(clean)}</p>`;
+  const paras = [];
+  for (let i = 0; i < sents.length; i += sentPerPara) {
+    paras.push(sents.slice(i, i + sentPerPara).join(""));
+  }
+  return paras.map((p) => `<p>${escapeHtml(p)}</p>`).join("");
+}
+
 // ========== 打分持久化（localStorage） ==========
 const STORAGE_PREFIX = "ziwei_ratings_";
 
@@ -64,7 +80,7 @@ function renderReport(chart, report) {
     { id: "ask", title: "追问 · 深挖某宫", html: renderAsk(), open: true },
   ];
   const html = sections.map((s) => {
-    const body = s.html || `<p>${escapeHtml(s.content || "")}</p>`;
+    const body = s.html || paragraphize(s.content || "");
     return `
       <div class="section ${s.open ? "" : "collapsed"}" data-id="${s.id}">
         <div class="section-head">
@@ -92,7 +108,7 @@ function renderPalaceList(palaces) {
     palaces.map((p, idx) => `
       <details class="palace-item" ${idx < 1 ? "open" : ""}>
         <summary>${escapeHtml(p.title)}</summary>
-        <div class="body">${escapeHtml(p.content)}</div>
+        <div class="body">${paragraphize(p.content)}</div>
       </details>
     `).join("")
   }</div>`;
@@ -315,7 +331,7 @@ function doAsk(topic) {
   const html = `
     <div class="ask-card">
       <h4>${escapeHtml(ans.title)}</h4>
-      <div class="body">${escapeHtml(ans.content)}</div>
+      <div class="body">${paragraphize(ans.content)}</div>
     </div>
   `;
   $("#ask-results").insertAdjacentHTML("afterbegin", html);
